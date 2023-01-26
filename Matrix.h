@@ -1,6 +1,8 @@
 #pragma once
 #include "Iterator.h"
 
+#include <memory>
+
 template <typename T, T default_value, size_t dim_count = 2>
 class Matrix
 {
