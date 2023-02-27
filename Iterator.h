@@ -9,39 +9,43 @@ class Iterator
 	using my_matrix = std::map<my_array, T>;
 
 public:
-	Iterator(typename my_matrix::iterator _mit)
-		: mit(_mit)
+	Iterator(my_matrix& _matrix, size_t _current_index)
+		: matrix(_matrix), current_index(_current_index)
 	{
 
 	}
 
 	bool operator!=(const Iterator& _it) const
 	{
-		return mit != _it.mit;
+		return current_index != _it.current_index;
 	}
 
 	Iterator& operator++()
 	{
-		++mit;
+		++current_index;
 		return *this;
 	}
 
 	Iterator& operator--()
 	{
-		--mit;
+		--current_index;
 		return *this;
 	}
 
 	Iterator& operator=(Iterator& _it)
 	{
-		mit = _it.mit;
+		current_index = _it.current_index;
 		return *this;
 	}
 
-	typename my_matrix::value_type& operator*()
+	const my_array& operator*()
 	{
-		return *mit;
+		auto it = matrix.begin();
+		std::advance(it, current_index);
+		return it->first;
 	}
+
 private:
-	typename my_matrix::iterator mit;
+	my_matrix& matrix;
+	size_t current_index;
 };

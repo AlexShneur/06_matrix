@@ -29,15 +29,13 @@ int main()
 
         std::cout << std::endl << "Busy cell count = " << matrix.size() << std::endl << std::endl;
 
-        for (size_t i = 0; i < matrix.size(); i++)
+        for (auto mit = matrix.begin(); mit != matrix.end(); ++mit)
         {
-            for (size_t j = 0; j < matrix.size(); j++)
+            for (auto ait=(*mit).begin(); ait!= (*mit).end(); ++ait)
             {
-                if (matrix[i][j] != DEFAULT_VALUE)
-                {
-                    std::cout << i << j << matrix[i][j] << std::endl;
-                }
+                std::cout << *ait;
             }
+            std::cout << (*mit).back() << std::endl;
         }
     }
     catch (std::exception ex)

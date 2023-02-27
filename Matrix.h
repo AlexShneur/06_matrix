@@ -1,6 +1,5 @@
 #pragma once
 #include "Iterator.h"
-
 #include <memory>
 
 template <typename T, T default_value, size_t dim_count = 2>
@@ -23,12 +22,12 @@ public:
 
     my_iterator begin()
     {
-        return my_iterator(matrix.begin());
+        return my_iterator(matrix,0);
     }
 
     my_iterator end()
     {
-        return my_iterator(matrix.end());
+        return my_iterator(matrix, matrix.size());
     }
 
     class ArrayProxy
@@ -111,4 +110,5 @@ private:
 
     std::map<my_array, T> matrix;
     std::shared_ptr<ArrayProxy> proxy;
+
 };
